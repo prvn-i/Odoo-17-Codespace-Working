@@ -1,21 +1,13 @@
 #!/bin/bash
-
-# 1. Virtual Environment Check
 if [[ "$VIRTUAL_ENV" != *"odoo-venv"* ]]; then
     echo "❌ ERROR: Activate venv first: source odoo-venv/bin/activate"
     exit 1
 fi
 
-echo "📦 Step 1: Installing Linux System Headers (LDAP & SASL)..."
-# This is the magic fix for the 'lber.h' error
-sudo apt-get update
-sudo apt-get install -y libldap2-dev libsasl2-dev libpq-dev build-essential python3-dev
-
-echo "🆙 Step 2: Updating Core Pip Tools..."
+echo "🆙 Updating Core Tools..."
 pip install --upgrade pip setuptools==67.8.0 wheel
 
-# 2. Re-write the requirements file
-echo "🧹 Step 3: Sanitizing requirements.txt..."
+echo "🧹 Patching requirements.txt..."
 cat <<EOF > odoo/requirements.txt
 Babel==2.10.3
 chardet==4.0.0
@@ -64,8 +56,5 @@ zope.interface==6.2
 rjsmin==1.2.0
 EOF
 
-# 3. Final Installation
-echo "📦 Step 4: Installing Python packages..."
 pip install -r odoo/requirements.txt
-
-echo "🚀 All dependencies (including python-ldap) installed successfully!"
+echo "🚀 Python Environment Ready!"
