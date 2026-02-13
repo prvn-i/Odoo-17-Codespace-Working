@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-WORKING_DIR="/workspaces/odooCodesapce"
+WORKING_DIR=$(pwd)
 PYTHON_VER="3.10.13"
 
 echo "📂 Setting up Odoo 17 Environment in $WORKING_DIR..."
