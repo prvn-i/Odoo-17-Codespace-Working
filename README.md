@@ -100,3 +100,91 @@ HTTP service (werkzeug) running on localhost:8069
 ⏳ This process may take up to 2 minutes.
 
 ---
+
+# 🔄 Development Enhancements
+
+This project includes additional development utilities to speed up customization and debugging.
+
+---
+
+## ♻️ Auto Reload + Debug Console
+
+The Odoo server is configured to run in **development mode** with:
+
+* ✅ **Auto-reload** enabled (Python & XML changes reload automatically)
+* 🐞 **Debug console** enabled
+* 🔎 Enhanced logging for faster troubleshooting
+
+This means:
+
+* No need to manually restart the server after code changes
+* Faster development workflow
+* Immediate feedback during module updates
+
+If needed, you can verify debug mode is active by checking the server logs after startup.
+
+---
+
+## 📦 Custom Development Module
+
+A custom module has been added to simplify development tasks.
+
+### 🔧 Purpose
+
+* Quick upgrades of custom modules
+* Rapid reloading of installed modules
+* Faster iteration during development
+
+The module is automatically available after database creation.
+
+---
+
+## ⚡ Quick Upgrade Endpoint
+
+A shortcut route has been added for fast module upgrades:
+
+```
+/q
+```
+
+### ▶ Usage
+
+Open in your browser:
+
+```
+http://localhost:8069/q
+```
+
+### ✅ What It Does
+
+* Automatically upgrades custom modules
+* Reloads modified installed modules
+* Avoids manual upgrade steps from the Apps menu
+* Saves development time
+
+⚠️ **Note:** This route is intended for development use only.
+Do not enable in production environments.
+
+---
+
+## 🚀 Recommended Development Workflow
+
+1. Start Odoo:
+
+   ```bash
+   ./run.sh
+   ```
+
+2. Make changes in your custom module.
+
+3. Open:
+
+   ```
+   http://localhost:8069/q
+   ```
+
+4. Refresh your browser.
+
+No manual restart required thanks to auto-reload 🎉
+
+---
